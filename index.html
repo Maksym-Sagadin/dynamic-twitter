@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,14 +8,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-        <div class="container">
-            <header></header>
-            <section class="cover-img"></section>
-            <section class="profile"></section>
-            <nav></nav>
-            <section class="tweets"></section>
-        </div>
+    <div class="main-container">
+        <header>
+            <a class='back-arrow'>↩</a>
+            <div class='header-info'></div>
+        </header>
+        <div class="cover-img"></div>
+        <section class="profile-container">
+            <div class='follow-container'>
+                <button class='follow-button' href='#'>Follow</button>
+            </div>
+        </section>
+        <nav class='tabs-container'>
+            <a href = "#" class="nav-tabs tab-active" id="Tweets">Tweets</a>
+            <a href = "#" class="nav-tabs" id="Tweets-Replies">Tweets & Replies</a>
+            <a href = "#" class="nav-tabs" id="Media">Media</a>
+            <a href = "#" class="nav-tabs" id="Likes">Likes</a>
+        </nav>
+        <article class="tweets"></article>
     </div>
     <script src="index.js"></script>
 </body>

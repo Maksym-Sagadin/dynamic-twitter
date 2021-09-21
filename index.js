@@ -2,6 +2,7 @@ var user1 = {
     userName: '@elonmusk',
     displayName: 'Elon Musk',
     joinedDate: 'June 2009',
+    tweetCount: 15456,
     followingCount: 103,
     followerCount: 47900000,
     avatarURL: 'assets/elonmusk.jpg',
@@ -26,6 +27,7 @@ var user2 = {
     userName: '@BillGates',
     displayName: 'Bill Gates',
     joinedDate: 'July 2009',
+    tweetCount: 3624,
     followingCount: 274,
     followerCount: 53800000,
     avatarURL: 'assets/billgates.jpg',
@@ -46,5 +48,118 @@ var user2 = {
     ]
 };
 
-let header = document.querySelector("header");
-container.
+// These two functions will help us format larger numbers for friendlier reading
+function intlFormat(num)
+{
+  return new Intl.NumberFormat().format(Math.round(num*10)/10);
+}
+function makeFriendly(num)
+{
+  if(num >= 1000000)
+    return intlFormat(num/1000000)+'M';
+  if(num >= 1000)
+    return intlFormat(num/1000)+'k';
+  return intlFormat(num);
+};
+
+//Tab Selector
+const navTabs = document.querySelectorAll('.nav-tabs');
+navTabs.forEach(tab => {
+  tab.addEventListener('click', function() {
+    for (let tab of navTabs){
+      tab.classList.remove('tab-active');
+    }
+    tab.classList.add('tab-active');
+  })
+});
+
+//Follow Button
+const followButton = document.querySelector('.follow-button');
+let follow = false;
+
+followButton.addEventListener('click', function() {
+  if (followButton.textContent === 'Follow') {
+    followButton.textContent = 'Following';
+    followButton.setAttribute('style','background-color: cornflowerblue; color: white');
+  }
+  else {
+    followButton.textContent = 'Follow';
+    followButton.setAttribute('style','background-color: white; color: cornflowerblue');
+    // followButton.style.cssText = 'background-color: white; color: cornflowerblue;';
+  }
+});
+
+//Header Text
+const header = document.querySelector(".header-info");
+let userName = document.createElement('h4');
+userName.innerHTML = `<h4 class='display-name'>${user2.displayName}</h4>
+<h4 class='check'>✔</h4>`;
+header.appendChild(userName);
+
+let tweetCount = document.createElement('h6');
+tweetCount.innerHTML = `<h6 class='tweet-count'>${makeFriendly(user2.tweetCount)} Tweets</h6>`;
+header.appendChild(tweetCount);
+
+//Cover Image
+const coverDiv = document.querySelector('.cover-img');
+let coverImg = document.createElement('img');
+coverImg.src = user2.coverPhotoURL;
+coverDiv.appendChild(coverImg);
+
+//Profile Pic
+const profileContainer = document.querySelector('.profile-container');
+let profilePic = document.createElement('img');
+profilePic.classList.add('profile-pic');
+profilePic.src = user2.avatarURL;
+profileContainer.appendChild(profilePic);
+
+//Profile Text
+let displayName = document.createElement('h4');
+displayName.innerHTML = `<h4 class='display-name'>${user2.displayName}</h4>
+<h4 class='check'>✔</h4>`;
+profileContainer.appendChild(displayName);
+
+let userTag = document.createElement('h5');
+userTag.innerHTML = `<h5 class='user-tag'>${user2.userName}</h5>`;
+profileContainer.appendChild(userTag);
+
+let joinedTime = document.createElement('h5');
+joinedTime.innerHTML = `<h5 class='joined-date'>📅 Joined ${user2.joinedDate}`;
+profileContainer.appendChild(joinedTime);
+
+let followingCount = document.createElement('h5');
+followingCount.innerHTML = `<h5 class='following-count'>${makeFriendly(user2.followingCount)} Following</h5>`;
+profileContainer.appendChild(followingCount);
+
+let followersCount = document.createElement('h5');
+followersCount.innerHTML = `<h5 class='followers-count'>${makeFriendly(user2.followerCount)} Followers</h5>`;
+profileContainer.appendChild(followersCount);
+
+//Tweets
+const tweetContainer = document.querySelector('.tweets');
+for (let i=0; i<user2.tweets.length; i++) {
+  
+  let tweet = document.createElement('div');//Tweet Container
+  tweet.classList.add('tweet');
+  tweetContainer.appendChild(tweet);
+  
+  let tweetAvatarContainer = document.createElement('div');//Profile Pic Container
+  tweetAvatarContainer.classList.add('tweet-avatar-container');
+  tweet.appendChild(tweetAvatarContainer);
+  
+  let tweetAvatar = document.createElement('img');//Avatar IMG
+  tweetAvatar.classList.add('tweet-avatar');
+  tweetAvatar.src = user2.avatarURL;
+  tweetAvatarContainer.appendChild(tweetAvatar);
+  
+  const tweetTextContainer = document.createElement('div'); //
+  tweetTextContainer.classList.add('tweet-text-container');  
+  tweetTextContainer.innerHTML = `
+  <p class='tweet-display-name'>${user2.displayName}</p>
+  <p class='check'>✔</p>
+  <p class='tweet-username'>${user2.userName}</p>
+  <p class='tweet-timestamp'>${user2.tweets[i].timestamp}</p>
+  <p class='tweet-text'>${user2.tweets[i].text}</p>
+  `;
+  tweet.appendChild(tweetTextContainer);
+};
