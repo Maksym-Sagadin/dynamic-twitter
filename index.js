@@ -156,7 +156,7 @@ profileContainer.appendChild(userTag);
 
 let joinedTime = document.createElement('h5');
 joinedTime.classList.add('joined-date');
-joinedTime.innerHTML = `📅 Joined ${users[activeUser].joinedDate}`;
+joinedTime.innerHTML = `<i class="fa fa-calendar" aria-hidden="true"></i> Joined ${users[activeUser].joinedDate}`;
 profileContainer.appendChild(joinedTime);
 
 let followingCount = document.createElement('h5');
