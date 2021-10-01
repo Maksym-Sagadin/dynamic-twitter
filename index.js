@@ -2,6 +2,8 @@ const users = {
   user1 : {
     userName: '@elonmusk',
     displayName: 'Elon Musk',
+    location: 'Mars',
+    url: 'tesla.com',
     joinedDate: 'June 2009',
     tweetCount: 15456,
     followingCount: 103,
@@ -26,6 +28,8 @@ const users = {
   user2 : {
     userName: '@BillGates',
     displayName: 'Bill Gates',
+    location: 'Seattle, WA',
+    url: 'gatesnot.es/blog',
     joinedDate: 'July 2009',
     tweetCount: 3624,
     followingCount: 274,
@@ -158,10 +162,25 @@ userTag.classList.add('user-tag');
 userTag.innerHTML = `${users[activeUser].userName}`;
 profileContainer.appendChild(userTag);
 
-let joinedTime = document.createElement('h5');
+let extraProfileInfo = document.createElement('div');
+extraProfileInfo.classList.add('profile-info');
+profileContainer.appendChild(extraProfileInfo);
+
+let residence = document.createElement('p');
+residence.classList.add('location');
+residence.innerHTML = `<i class="fa fa-map-marker" aria-hidden="true"></i> ${users[activeUser].location}`;
+extraProfileInfo.appendChild(residence);
+
+let link = document.createElement('a');
+link.classList.add('url-link');
+link.href = users[activeUser].url;
+link.innerHTML = `<i class="fa fa-link"></i> ${users[activeUser].url}`;
+extraProfileInfo.appendChild(link);
+
+let joinedTime = document.createElement('p');
 joinedTime.classList.add('joined-date');
 joinedTime.innerHTML = `<i class="fa fa-calendar" aria-hidden="true"></i> Joined ${users[activeUser].joinedDate}`;
-profileContainer.appendChild(joinedTime);
+extraProfileInfo.appendChild(joinedTime);
 
 let followingCount = document.createElement('h5');
 followingCount.classList.add('following-count');

@@ -88,6 +88,13 @@ header {
 .profile-container {
     padding: 12px 16px;
 }
+.profile-info {
+    display: flex;
+  }
+.profile-info > p, .profile-info > a {
+    margin: 5px 20px 5px 0px;
+    color: dimgray;
+}
 .user-tag {
     margin-bottom: 8px;
 }
