@@ -72,7 +72,7 @@ function getQueryVariable(value) {
 
 let activeUser = getQueryVariable('user');
 if (!activeUser) {
-  activeUser = 'user2'
+  activeUser = 'user2';
 };
 
 //Formats numbers
