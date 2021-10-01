@@ -34,6 +34,10 @@ const users = {
     coverPhotoURL: 'https://pbs.twimg.com/profile_banners/50393960/1626063534/1500x500',
     tweets: [
       {
+        text: 'Single and ready to Mingle. #SwipeRight :)',
+        timestamp: '3/15/2021 12:22:21'
+      },
+      {
         text: 'Everybody asks, how is the next Windows coming along? But nobody asks how is Bill? :/',
         timestamp: '2/10/2021 00:02:22'
       },
